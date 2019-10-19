@@ -23,21 +23,28 @@ import com.ly.e8.helper.SignUtil;
 @RequestMapping("/")
 public class PayController {
 	
+	//下单页面
 	@GetMapping("/")
 	public String view(Model model) {
 		model.addAttribute("callback", Config.notify_url);
 		return "index";
 	}
 	
+	//下单接口
 	@SuppressWarnings("deprecation")
 	@PostMapping("pay")
 	public void placeOrder(Order order, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		//空参数过滤并转为URL请求格式
 		String signParams = Helper.filterNullParams(order, null);
+		//RSA签名
 		String sign = SignUtil.getSign("RSA_1_256", signParams);
+		//所有value进行urlEncode
 		String params = Helper.valueToUrlEncode(signParams)+"&ly_sign="+URLEncoder.encode(sign);
+		//重定向
 		response.sendRedirect(Config.req_url+"?"+params);
 	}
 	
+	//异步回调接口
 	@PostMapping("callback")
 	@ResponseBody
 	public String callback(Callback callback){
@@ -52,6 +59,7 @@ public class PayController {
 		return valid ? "ok" : errMsg;
 	}
 	
+	//同步回调接口
 	@GetMapping("callback")
 	public String callback(Callback callback, Model model) throws Exception {
 		boolean valid = false;
