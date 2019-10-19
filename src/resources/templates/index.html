@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>E8云支付-DEMO</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+	rel="stylesheet" />
+
+<style>
+input {
+	padding：2px 8px 0pt 3px;
+	border：1px solid #999;
+	background-color: #f5eeee;
+}
+
+body {
+	font-family：Georgia;
+	FILTER：Alpha (style=1,opacity=25,finishOpacity=100, startX=50,finishX=100,startY=50,finishY=100);
+	background-color： #fff;
+	
+}
+</style>
+<link rel="shortcut icon" th:href="@{static/favicon.ico}">
+</head>
+<body style="background-color: #FFFFFF">
+	<div class="container" style="padding: 30px;">
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-12 text-center">
+					<h1>易呗云支付DEMO JAVA版本</h1>
+					<p>-------------------------------------------------------</p>
+					<h2>调用付款接口,构造以下表格</h2>
+				</div>
+			</div>
+			<form method="POST" action="./pay" id="ctl01" class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">商户号：</label>
+					<div class="col-sm-10">
+						<input type="text" name="ly_user_id" id="parter"
+							class="form-control" value="61000006" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">商户私钥：</label>
+					<div class="col-sm-10">
+						<input type="text" id="key" class="form-control"
+							aria-multiline="true"
+							value="MIIEpgIBAAKCAQEA5NZGQvY2OeqnbBLJFi2jPEFgPaGV772NLX2FALp0ePyfFFNzh+JdOPZGc0BvhTjbCOETajhZyKjERVHaCORq++IZZSnRazQjgL2uh6I4SpazFeBpAFcMy/zOkhx6RJFwU0apQGSARW+ZdCxR8T/htu/7ORGOvNIePLXdH6qyjSnE+pcJWaAOdq1DsAHxQI1XWCPxrU6Ufb6r0PQDZiHMsZkYLOVMWlTF0psoxuSNl/ElAwDiNXOvN+6NK0tgNrnUm8Yy8nHEJfcoj5+GgDGXKlOf4oFwPWUJFUzI5Tq7EoKNiLaE8kzCxEOVhfSJLkMkBLXR1vLtY8X8azXFDidtSwIDAQABAoIBAQC/ot32R8BDokoQzG6P3yo7VLhnBIHO4ltvRBV09bCCfXQvDm/K1Puir0NyUvzRgTqU5gBfTM+LpiGvt4szNS6Ov9rqiCmzcFdnAfI97dDcTfWtlV/5g+zYi17mp2iRMYbyhlNI9KEjBQFqc48vzIKWs8QcF6MEZ6Ygy2Bhm46pfUJf93fjz9TcEtHxw6BibKGNstQQdozlrFY0/fzJj1KzW785JmnelkmP+MA4bZcruAzjZ+87hOsdYBC2nQ8G2LoaLkWS5En5576dMDSu4nLxPya1J321jaO0tpCsjipt2HCkeAYwsZzXTyixVe9xAvUNYUKnmr7gh8O9fO/D1WNJAoGBAP8hrW7jSjMvFk+EwQwQMm6r6p6PNULjKFcsZ2D7wAhHIaPfLY42VnOrTd/b7Xhdz9o5Q6mxRIl9IOQDYbHDhZOJThvKAfX2RnOydgZKcIZui474zWmm7gNUEwqzAj5REzhNrC8XhPHRsEIx0fsm+iZH8DCPG9TL4z85e/f5ip6/AoGBAOWdrw9vvIhJA4mwv3cEwZoWw2TftECGtMflRJe+0BvTKJSB7vmAKG5YJ/RGiyYkxmu59JXEKn1Bz5Y3Cm6uuVAjiN6kesWum2ko7+6777EztF0SqmiCO8ch9fA9nd/QmrcB9BjGU+gF5n9kPj1M/mWNicLqryuvBev/D9TUSyB1AoGBAINu9AvmJ7mKjnHUsCboyTJeenXIzOVyZLvT8kXyK5GYI2pqdOuIbq0UGQA0KngRzBxd18+5tNcnkSQl4dRUJ6JD3+tM/AmcH9tGmqrO+n0mwdqbria5inBIha7DXWqBFeexi/yOnzx8i9LuG4DJKaFC+ifp8aqEhsNxd73d3l29AoGBAJmABJvpMrxZM0hFJHpIb7S3KwCwnCvW4dwQZP6czTsMusAs7LlW97BstqkSz8s8Inm54syMS2tZJ5FgUlUT8UalusY8Zuboh3SRrXSHpwFrc1QVOl6LUbMZ/PQR/Qy2w/c8ExbM3yLpbuIS/Zi1dAwnxsTLZzdo1iiiZs787QxRAoGBAMQt9HQcFqBO05xwu5QN1A6Ibmap5rvJ/OK8xE63qV8iJEK7Qh5N9ks8e+wJ+SkywLfoySgq7q4kPIunXDawDdcJLgPfQ9J2S2AiTMP2PPauzBpnk04wj9p1Ep90sKEpYphwOau+7ylOMhtmARroq2MtvuBqAWIMtM7Vh1+ddaYu" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">订单号：</label>
+					<div class="col-sm-10">
+						<input size="30" type="text" name="ly_order_no" id="inp_orderno" value="" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">金&nbsp;&nbsp;额：</label>
+					<div class="col-sm-10">
+						<input size="30" type="text" name="ly_money" id="inp_price"
+							value="1" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">支付方式：</label>
+					<div class="col-sm-10">
+						<select name="ly_trade_type" class="form-control">
+							<option value="ICBC">工商银行</option>
+							<option value="ABC">农业银行</option>
+							<option value="CCB">建设银行</option>
+							<option value="CMB">招商银行</option>
+							<option value="BCCB">北京银行</option>
+							<option value="BOCO">交通银行</option>
+							<option value="CIB">兴业银行</option>
+							<option value="NJCB">南京银行</option>
+							<option value="CMBC">中国民生银行</option>
+							<option value="CEB">光大银行</option>
+							<option value="PINGANBANK">平安银行</option>
+							<option value="CBHB">渤海银行</option>
+							<option value="HKBEA">东亚银行</option>
+							<option value="NBCB">宁波银行</option>
+							<option value="ECITIC">中信银行</option>
+							<option value="SDB">深圳发展银行</option>
+							<option value="SHB">上海银行</option>
+							<option value="SPDB">上海浦东发展银行</option>
+							<option value="POST">中国邮政</option>
+							<option value="BJRCB">北京农村商业银行</option>
+							<option value="HXB">华夏银行</option>
+							<option value="ZSB">浙商银行</option>
+							<option value="HZBANK">杭州银行</option>
+							<option value="SHRCB">上海农村商业银行</option>
+							<option value="NCBBANK">南洋商业银行</option>
+							<option value="SCCB">河北银行</option>
+							<option value="ZJTLCB">泰隆银行</option>
+							<option value="HSB">徽商银行</option>
+							<option value="GZB">广州银行</option>
+							<option value="GZRCB">广州市农村商业银行</option>
+							<option value="BOC">中国银行</option>
+							<option value="GDB">广东发展银行</option>
+							<option value="UNIONPAY">银联页面</option>
+							<option value="pay_alipay_code">支付宝扫码</option>
+							<option value="pay_alipay_gatewaycode">支付宝网关</option>
+							<option value="pay_tenpay_code">财付通</option>
+							<option value="pay_qpay_code" selected="selected">QQ钱包扫码</option>
+							<option value="pay_wxpay_code">微信扫码</option>
+							<option value="pay_alipay_h5code">支付宝H5</option>
+							<option value="pay_wxpay_h5code">微信H5</option>
+							<option value="pay_wxpay_jsapicode">微信公众号</option>
+							<option value="pay_qpay_h5code">QQ钱包H5</option>
+							<option value="pay_qpay_jsapicode">QQ钱包公众号</option>
+							<option value="pay_bank_h5code">网银WAP</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">同步返回地址：</label>
+					<div class="col-sm-10">
+						<input size="50" type="text" name="ly_return_url"
+							id="inp_RecefiveUrl" class="form-control" th:value="${callback}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">异步返回地址：
+					</label>
+					<div class="col-sm-10">
+						<input size="50" type="text" name="ly_notify_url"
+							id="inp_NotifyUrl" th:value="${callback}" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">商户订单备注：</label>
+					<div class="col-sm-10">
+						<input size="50" type="text" name="ly_notes" id="remark"
+							class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">订单描述：</label>
+					<div class="col-sm-10">
+						<input size="50" type="text" name="ly_body" id="remark" value="订单测试"
+							class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">订单支付加密方式：</label>
+					<div class="col-sm-10">
+						<select name="ly_sign_type" class="form-control">
+							<option value="MD5">MD5</option>
+							<option value="RSA2" selected="selected">RSA2</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">是否直反二维码：</label>
+					<div class="col-sm-10">
+						<select name="ly_scan_code" class="form-control">
+							<option value="true">是</option>
+							<option value="false" selected="selected">否</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">是否显示成功页面：</label>
+					<div class="col-sm-10">
+						<select name="ly_skip_not_page" class="form-control">
+							<option value="true">是</option>
+							<option value="false" selected="selected">否</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-lg btn-danger">点我提交付款</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+	<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$('#inp_orderno').val(new Date().getTime()+(Math.random()*999999).toFixed(0))
+	</script>
+</body>
+</html>
